@@ -6,6 +6,7 @@ let currentDisplayValue = null;
 let secondNum = null;
 let currentoperator = null;
 let toggleNum = 1;
+let equalToggle = 0;
 
 const btnNumOne = document.querySelector(".one").addEventListener("click",() => {DisplayValue(1);});
 const btnNumTwo = document.querySelector(".two").addEventListener("click", () => {DisplayValue(2);});
@@ -88,12 +89,13 @@ function doCalculation(operator, num1, num2){
     secondNum = null;
     currentoperator = null;
     toggler();
-
+    equalToggle = 1;
 }
 
 function DisplayValue(num){
-    if(currentoperator === null){
+    if(equalToggle === 1 && currentoperator === null){
         clear();
+        equalToggle = 0;
     }
     if(displayScreen.innerHTML.length < 9){
         if(toggleNum === 1){
